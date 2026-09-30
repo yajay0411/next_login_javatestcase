@@ -15,14 +15,14 @@ public class ElementPresenceTest extends BaseTest {
   public void loginPageShowsAllElements() {
     LoginPage page = new LoginPage(driver).open();
 
-    assertTrue(page.isPresent(LoginPage.HEADING), "heading 'Welcome back' missing");
-    assertTrue(page.isPresent(LoginPage.SUBHEADING), "card description missing");
+    page.find(LoginPage.HEADING);
+    page.visible(LoginPage.SUBHEADING);
     assertEquals(page.textOf(LoginPage.EMAIL_LABEL), "Email");
     assertEquals(page.textOf(LoginPage.PASSWORD_LABEL), "Password");
-    assertTrue(page.isPresent(LoginPage.EMAIL_INPUT), "email input missing");
-    assertTrue(page.isPresent(LoginPage.PASSWORD_INPUT), "password input missing");
-    assertTrue(page.isPresent(LoginPage.SUBMIT), "'Sign in' button missing");
-    assertTrue(page.isPresent(LoginPage.REGISTER_LINK), "'Create one' link missing");
+    page.visible(LoginPage.EMAIL_INPUT);
+    page.visible(LoginPage.PASSWORD_INPUT);
+    page.visible(LoginPage.SUBMIT);
+    page.visible(LoginPage.REGISTER_LINK);
   }
 
   @Test(description = "Login inputs carry the placeholders and autocomplete hints")
@@ -40,15 +40,15 @@ public class ElementPresenceTest extends BaseTest {
   public void registerPageShowsAllElements() {
     RegisterPage page = new RegisterPage(driver).open();
 
-    assertTrue(page.isPresent(RegisterPage.HEADING), "heading 'Create your account' missing");
-    assertTrue(page.isPresent(RegisterPage.SUBHEADING), "card description missing");
+    page.visible(RegisterPage.HEADING);
+    page.visible(RegisterPage.SUBHEADING);
     assertEquals(page.textOf(RegisterPage.NAME_LABEL), "Full name");
     assertEquals(page.textOf(RegisterPage.EMAIL_LABEL), "Email");
     assertEquals(page.textOf(RegisterPage.PASSWORD_LABEL), "Password");
     assertEquals(page.textOf(RegisterPage.CONFIRM_LABEL), "Confirm password");
-    assertTrue(page.isPresent(RegisterPage.PASSWORD_HINT), "'At least 8 characters.' missing");
-    assertTrue(page.isPresent(RegisterPage.SUBMIT), "'Create account' button missing");
-    assertTrue(page.isPresent(RegisterPage.LOGIN_LINK), "'Sign in' link missing");
+    page.visible(RegisterPage.PASSWORD_HINT);
+    page.visible(RegisterPage.SUBMIT);
+    page.visible(RegisterPage.LOGIN_LINK);
   }
 
   @Test(description = "The two auth pages link to each other")

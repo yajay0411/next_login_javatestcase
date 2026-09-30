@@ -22,8 +22,12 @@ public abstract class BasePage {
     this.wait = new WebDriverWait(driver, TIMEOUT);
   }
 
-  protected WebElement visible(String xpath) {
+  public WebElement visible(String xpath) {
     return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+  }
+
+  public WebElement find(String xpath) {
+    return driver.findElement(By.xpath(xpath));
   }
 
   protected void type(String xpath, String text) {
